@@ -40,7 +40,7 @@ public class HeroBehavior : MonoBehaviour {
             return;
         }
 
-        mHeroSpeed += Input.GetAxis("Vertical") * 0.5f;
+        mHeroSpeed += Input.GetAxis("Vertical") * 1f;
         transform.position += transform.up * (mHeroSpeed * Time.smoothDeltaTime);
         transform.Rotate(Vector3.forward, -1f * Input.GetAxis("Horizontal") *
                                     (kHeroRotateSpeed * Time.smoothDeltaTime));
