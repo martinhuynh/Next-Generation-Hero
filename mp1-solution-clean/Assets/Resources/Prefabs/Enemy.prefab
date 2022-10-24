@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689646e81dce4be4887fc107bbf4455e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 5774310441215899798, guid: 98cac2fcb65334ea69381e7751a6691e,
+    type: 3}
   mSpeed: 20
   nextPoint: {fileID: 1867261166993436380, guid: c4d277e4792aa46faa86d86666144a30,
     type: 3}

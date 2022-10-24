@@ -6,6 +6,7 @@ using System.Collections;
  */
 public class EnemyBehavior : MonoBehaviour {
 
+	public EnemySpawner enemySpawner;
 	private int startHP = 4;
 	private int currentHP;
 	private float[] opacity;
@@ -93,12 +94,11 @@ public class EnemyBehavior : MonoBehaviour {
 	private void respawn()
 	{
 		currentHP = startHP;
-		// relocate 15 to 15 randomly x and y.
-		int xMag = 45;
-		int yMag = 25;
-		Vector3 objPosition = new Vector3(Random.Range(xMag * -1, xMag), + Random.Range(yMag * -1, yMag), 0);
+		//int xMag = 45;
+		//int yMag = 25;
+		//Vector3 objPosition = new Vector3(Random.Range(xMag * -1, xMag), + Random.Range(yMag * -1, yMag), 0);
 		gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity[currentHP - 1]);
-		transform.position = objPosition;
+		transform.position = enemySpawner.getRandomLocation();
 	}
 
 	// New direction will be something completely random!

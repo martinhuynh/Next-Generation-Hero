@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        //spawnBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         SpawnEnemies();
     }
 
@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
 
     public Vector3 getRandomLocation()
     {
-        
+        spawnBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         bool objSpawned = false;
         Vector3 newLocation = new Vector3();
         while (!objSpawned)
@@ -66,6 +66,7 @@ public class EnemySpawner : MonoBehaviour
                 objSpawned = true;
                 newLocation = objPosition;
             }
+            //Debug.Log("Loop: " + newLocation);
         }
         return newLocation;
     }
