@@ -22,7 +22,7 @@ public class PointSpawner : MonoBehaviour
         points.Add(D);
         points.Add(E);
         points.Add(F);
-        Debug.Log("Points size: " + points.Count);
+        //Debug.Log("Points size: " + points.Count);
     }
 
     // Update is called once per frame
