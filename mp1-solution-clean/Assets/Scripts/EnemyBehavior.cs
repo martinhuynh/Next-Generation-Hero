@@ -72,6 +72,7 @@ public class EnemyBehavior : MonoBehaviour {
         } else if (collision.gameObject.name.Contains("Hero"))
         {
 			GlobalBehavior.sTheGlobalBehavior.UpdateTouchedEnemies(++touched);
+			GlobalBehavior.sTheGlobalBehavior.UpdateDestroyedEnemies(destroyed + touched);
 			respawn();
         } else if (collision.gameObject.name.Equals(nextPoint.gameObject.name))
         {
