@@ -12,7 +12,9 @@ public class EnemyBehavior : MonoBehaviour {
 	private static int destroyed = 0;
 	private static int touched = 0;
 	public float mSpeed = 20f;
+	private float rotationSpeed = 150f;
 	public GameObject nextPoint;
+	private Vector2 mousePos;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,32 +26,27 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.up = new Vector3(nextPoint.transform.position.x, nextPoint.transform.position.y, 0.0f);
-		//Vector3 targ = nextPoint.transform.position;
-		//targ.z = 0f;
 
-		//Vector3 objectPos = transform.position;
-		//targ.x = targ.x - objectPos.x;
-		//targ.y = targ.y - objectPos.y;
-
-		//float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg * 90f;
-		//transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-		
 		transform.position += (mSpeed * Time.smoothDeltaTime) * transform.up;
-		Vector2 v = nextPoint.transform.position - transform.position;
-		transform.up = new Vector3(v.x, v.y, 0.0f);
-		GlobalBehavior globalBehavior = GameObject.Find ("GameManager").GetComponent<GlobalBehavior>();
-		
-		GlobalBehavior.WorldBoundStatus status =
-			globalBehavior.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
-			
-		if (status != GlobalBehavior.WorldBoundStatus.Inside) {
-			//Debug.Log("collided position: " + this.transform.position);
-			NewDirection();
-		}
+        GlobalBehavior globalBehavior = GameObject.Find("GameManager").GetComponent<GlobalBehavior>();
 
-		
-		
+        GlobalBehavior.WorldBoundStatus status =
+            globalBehavior.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
+
+        if (status != GlobalBehavior.WorldBoundStatus.Inside)
+        {
+            //Debug.Log("collided position: " + this.transform.position);
+            NewDirection();
+        }
+        mousePos = nextPoint.transform.position;	
+	}
+
+	void FixedUpdate()
+	{
+		Vector2 lookDirection = mousePos - new Vector2(transform.position.x, transform.position.y);
+		float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+		Quaternion qTo = Quaternion.Euler(new Vector3(0, 0, angle));
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, rotationSpeed * Time.deltaTime);
 	}
 
 	private void calculateOpactiy()
