@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PointBehavior : MonoBehaviour
 {
-    private static List<GameObject> points = new();
     private int startHP = 4;
     private int currentHP;
     private float[] opacity;
@@ -15,7 +14,6 @@ public class PointBehavior : MonoBehaviour
         currentHP = startHP;
         calculateOpactiy();
         startPosition = transform.position;
-        points.Add(this.gameObject);
     }
 
     // Update is called once per frame
@@ -28,12 +26,13 @@ public class PointBehavior : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collide");
+        //Debug.Log("Collide");
         if (collision.gameObject.name.Contains("Egg")) {
-            Debug.Log("Egg");
+            //Debug.Log("Egg");
             decHP();
             // Destroy egg
             Destroy(collision.gameObject);
+            GlobalBehavior.sTheGlobalBehavior.DestroyAnEgg();
         }
     }
 
@@ -53,6 +52,8 @@ public class PointBehavior : MonoBehaviour
             opacity[i] = increments * (i + 1);
         }
     }
+
+    
 
     private void respawn()
     {

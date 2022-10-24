@@ -58,10 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/EggSupport/EggBehavior.cs" />
     <Compile Include="Assets/Scripts/HeroBehavior.cs" />
+    <Compile Include="Assets/Scripts/PointBehavior.cs" />
+    <Compile Include="Assets/EnemySpawner.cs" />
     <Compile Include="Assets/Scripts/EnemyBehavior.cs" />
     <Compile Include="Assets/Scripts/GlobalBehavior.cs" />
+    <Compile Include="Assets/Scripts/PointSpawner.cs" />
     <Compile Include="Assets/Scripts/EggSupport/EggStatSystem.cs" />
-    <Compile Include="Assets/Scripts/PointBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

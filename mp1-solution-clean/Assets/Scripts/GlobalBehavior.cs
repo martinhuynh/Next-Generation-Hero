@@ -9,7 +9,11 @@ public class GlobalBehavior : MonoBehaviour {
 
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
     public Text controlDriver = null;
-   
+    public Text touchedEnemies = null;
+    public Text destroyedEnemies = null; // includes touched enemies
+
+    public Text nextWayPoint = null;
+    public Text showWayPoints = null;
 
     #region World Bound support
     private Bounds mWorldBound;  // this is the world bound
@@ -149,14 +153,34 @@ public class GlobalBehavior : MonoBehaviour {
         mEggStat.DecEggCount();
     }
 
-    public void UpdateGameState(string msg)
+    public void UpdateEggCount(int msg)
     {
-        mGameStateEcho.text = msg;
+        mGameStateEcho.text = "Egg Count(" + msg + ")";
     }
 
     public void UpdateDriver(string driver)
     {
         controlDriver.text = "HERO: Drive(" + driver + ")";
+    }
+
+    public void UpdateDestroyedEnemies(int driver)
+    {
+        destroyedEnemies.text = "Destroyed(" + driver + ")";
+    }
+
+    public void UpdateTouchedEnemies(int driver)
+    {
+        touchedEnemies.text = "ENEMIES: Touched(" + driver + ")";
+    }
+
+    public void UpdateNextWayPoint(string next)
+    {
+        nextWayPoint.text = "WAYPOINTS: Next(" + next + ")";
+    }
+
+    public void UpdateShowWayPoints(bool b)
+    {
+        showWayPoints.text = "Show(" + ((b) ? "Visible" : "Hidden") + ")";
     }
 
     #endregion
