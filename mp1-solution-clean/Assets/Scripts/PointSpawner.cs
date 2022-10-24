@@ -11,7 +11,7 @@ public class PointSpawner : MonoBehaviour
     public GameObject D;
     public GameObject E;
     public GameObject F;
-    private bool isVisible = true;
+    public static bool isVisible = true;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +32,6 @@ public class PointSpawner : MonoBehaviour
         {
             isVisible = !isVisible;
             GlobalBehavior.sTheGlobalBehavior.UpdateShowWayPoints(isVisible);
-            foreach (GameObject i in points)
-            {
-                i.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, (isVisible) ? 1f : 0f);
-            }
         }
     }
 

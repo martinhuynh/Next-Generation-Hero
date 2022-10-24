@@ -21,7 +21,13 @@ public class PointBehavior : MonoBehaviour
     {
         // Check for egg collision.
         // if currentHP 0 spawn relocate randomly and reset hp.
-        
+        if (PointSpawner.isVisible)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity[currentHP - 1]);
+        } else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -40,7 +46,7 @@ public class PointBehavior : MonoBehaviour
     {
         currentHP--;
         if (currentHP <= 0) respawn();
-        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity[currentHP - 1]);
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, (PointSpawner.isVisible) ? opacity[currentHP - 1] : 0);
     }
 
     private void calculateOpactiy()
